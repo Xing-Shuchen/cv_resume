@@ -17,13 +17,18 @@
 
 
 % \setmainfont{Tahoma}
-\setmainfont{Times New Roman}  % 缺省英文字体.serif是有衬线字体sans serif无衬线字体
+\setmainfont{Liberation Serif}  % 缺省英文字体.serif是有衬线字体sans serif无衬线字体 (WSL使用Liberation Serif替代Times New Roman)
 
 \ifwindows
   % Windows 下使用的代码
   \setCJKmainfont[ItalicFont=KaiTi, BoldFont=SimHei]{SimSun}  % 衬线字体 缺省中文字体为
   \setCJKsansfont{SimSun}
   \setmonofont{FangSong}                 % 等宽字体: FangSong, Consolas
+\else
+  % Linux/WSL 下使用的代码
+  \setCJKmainfont[ItalicFont=AR PL KaitiM GB, BoldFont=WenQuanYi Zen Hei]{AR PL SungtiL GB}  % 衬线字体 缺省中文字体为宋体
+  \setCJKsansfont{WenQuanYi Micro Hei}  % 无衬线字体使用文泉驿微米黑
+  \setCJKmonofont{WenQuanYi Zen Hei Mono}  % 中文等宽字体
 \fi
 
 \ifmacosx
@@ -35,21 +40,22 @@
 
 
 %-----------------------xeCJK下设置中文字体------------------------------%
-\setCJKfamilyfont{song}{SimSun}  % 宋体 song
+% 以下字体设置为 WSL/Linux 兼容版本
+\setCJKfamilyfont{song}{AR PL SungtiL GB}  % 宋体 song (使用文鼎宋体)
 \newcommand{\song}{\CJKfamily{song}}
-\setCJKfamilyfont{fs}{FangSong_GB2312}  % 仿宋2312 fs
-\newcommand{\fs}{\CJKfamily{fs}}
-\setCJKfamilyfont{yh}{Microsoft YaHei}  % 微软雅黑 yh
+% \setCJKfamilyfont{fs}{FangSong_GB2312}  % 仿宋2312 fs (WSL中不可用，已注释)
+% \newcommand{\fs}{\CJKfamily{fs}}
+\setCJKfamilyfont{yh}{WenQuanYi Micro Hei}  % 微软雅黑 yh (使用文泉驿微米黑替代)
 \newcommand{\yh}{\CJKfamily{yh}}
-\setCJKfamilyfont{hei}{SimHei}  % 黑体  hei
+\setCJKfamilyfont{hei}{WenQuanYi Zen Hei}  % 黑体  hei (使用文泉驿正黑)
 \newcommand{\hei}{\CJKfamily{hei}}
-\setCJKfamilyfont{hwxh}{STXihei}  % 华文细黑  hwxh
-\newcommand{\hwxh}{\CJKfamily{hwxh}}
-\setCJKfamilyfont{asong}{Adobe Song Std}  % Adobe 宋体  asong
-\newcommand{\asong}{\CJKfamily{asong}}
-\setCJKfamilyfont{ahei}{Adobe Heiti Std}  % Adobe 黑体  ahei
-\newcommand{\ahei}{\CJKfamily{ahei}}
-\setCJKfamilyfont{akai}{Adobe Kaiti Std}  % Adobe 楷体  akai
+% \setCJKfamilyfont{hwxh}{STXihei}  % 华文细黑  hwxh (WSL中不可用，已注释)
+% \newcommand{\hwxh}{\CJKfamily{hwxh}}
+% \setCJKfamilyfont{asong}{Adobe Song Std}  % Adobe 宋体  asong (WSL中不可用，已注释)
+% \newcommand{\asong}{\CJKfamily{asong}}
+% \setCJKfamilyfont{ahei}{Adobe Heiti Std}  % Adobe 黑体  ahei (WSL中不可用，已注释)
+% \newcommand{\ahei}{\CJKfamily{ahei}}
+\setCJKfamilyfont{akai}{AR PL KaitiM GB}  % Adobe 楷体  akai (使用文鼎楷体替代)
 \newcommand{\akai}{\CJKfamily{akai}}
 
 
@@ -75,6 +81,8 @@
 % \XeTeXlinebreaklocale "zh"
 % \XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
 % moderncv themes
+% 使用 letters 图标样式以避免依赖 fontawesome5
+\moderncvicons{letters}
 \moderncvtheme[blue]{classic}  % optional argument are 'blue' (default), 'orange', 'red', 'green', 'grey' and 'roman' (for roman fonts, instead of sans serif fonts)
 % \moderncvtheme[green]{classic}  % idem
 % \moderncvtheme[blue,roman]{hht}
@@ -89,23 +97,21 @@
 \AtBeginDocument{\recomputelengths}  % required when changes are made to page layout lengths
 
 % personal data
-\firstname{三}
-\familyname{张}
-\title{SanZhang}  % optional, remove the line if not wanted
+\firstname{行}
+\familyname{增}
+\title{XingZeng}  % optional, remove the line if not wanted
 % \address{杭州}{}  % optional, remove the line if not wanted
-\address{1990/11/11}{}  % optional, remove the line if not wanted
-\mobile{18888888888}  % optional, remove the line if not wanted
-% \fax{fax (optional)}  % optional, remove the line if not wanted
-\email{me@resume.com}  % optional, remove the line if not wanted
-\homepage{Blog: http://geekplux.com}  % optional, remove the line if not wanted
-\social[github]{GitHub: https://github.com/geekplux}
+% \address{上海市青浦区华为练秋湖研发中心}{}  % optional, remove the line if not wanted
+\mobile{15209200692}  % optional, remove the line if not wanted
+\email{zengxing2025@163.com}  % optional, remove the line if not wanted
+% \homepage{Blog: http://geekplux.com}  % optional, remove the line if not wanted
+% \social[github]{GitHub: https://github.com/zengxing}
 \extrainfo{%
-  LinkedIn: https://cn.linkedin.com/in/xxx \\
-  WeChat: xxxx \\
-  QQ: 123456
+  % LinkedIn: https://cn.linkedin.com/in/zengxing \\
+  WeChat: Shuchen\_Xing \\
 }
 
-\photo[64pt]{avatar.png}  % '64pt' is the height the picture must be resized to and 'picture' is the name of the picture file; optional, remove the line if not wanted
+\photo[64pt]{证件照4.jpg}  % '64pt' is the height the picture must be resized to and 'picture' is the name of the picture file; optional, remove the line if not wanted
 % \quote{China\TeX 您的LaTeX乐园，TeX\&\LaTeX 王国}  % optional, remove the line if not wante
 
 % \nopagenumbers{}  % uncomment to suppress automatic page numbering for CVs longer than one page
@@ -118,47 +124,38 @@
 \maketitle
 \vspace*{-14mm}
 
-\section{工作经历}
-\cventry{17.01-17.12}{不长不短的公司名称}{可爱的项目}{https://keaidexiangmu.com}{}{工作中，
-  我负责了 xxx 的开发和维护，运用 yyy 技术解决了 zzz 的重大问题。积极参与开源社
-  区贡献}
-\cventry{16.01-16.12}{好长的公司名称}{有趣的项
-  目}{http://www.youqudexiangmu.com}{}{工作中，我按照领导的要求编程，做出了让领
-  导满意的作品，为公司做出了贡献。我觉得我还是凑字数吧，编不下去了}
-\cventry{15.01-15.12}{不知道叫什么的公司名称}{不可告人的项
-  目}{http://bukegaoren.com}{}{独立编写了根本编不下去的项目简介，可能还是凑字数
-  比较好，来凑字数吧来凑字数吧来凑字数吧。出色的完成了凑字数的工作，并获得了最佳
-  凑字数员工奖}
 \section{教育经历}
-\cventry{11.09-15.06}{本科}{尼姑庵大学}{计算机科学与技术}{}{}  % arguments 3 to 6 are optional
-\cvlistitem{最快编程大师一等奖}
-\cvlistitem{最强编程大师金奖}
-\cvlistitem{第 x 届「编程杯」gayhub 赛区一等奖}
-\cvlistitem{国家奖学金/三好学生/学生会主席/\emph{获得女朋友一个}}
-\cventry{15.09-18.06}{硕士}{和尚庙大学}{软件工程}{实验室 XXX 导师 XXX}{主要研究了
-  人工智能，图形学，编译原理，机械键盘的拆装，快递包装的暴力拆解，颈椎与视觉保
-  养，抹平小腹，治疗腰椎间盘突出}  % arguments 3 to 6 are optional
+\cventry{18.09-22.06}{本科}{西北工业大学}{信息安全}{}{}  % arguments 3 to 6 are optional
+\cvlistitem{C++/数据结构/操作系统/计算机网络/计算机组成原理/编译原理/数据库}
+\cvlistitem{全国大学生信息安全竞赛一等奖}
+\cventry{22.09-25.06}{硕士}{西北工业大学}{网络信息安全}{卫星通信安全与智能优化实验室}{}
+\cvlistitem{矩阵论/优化理论/深度学习}
+  % arguments 3 to 6 are optional
+
+
+\section{工作经历}
+\cventry{25.06--至今}{上海华为技术有限公司}{OpenHarmony方舟编译运行时}{}{方舟运行时团队}{万马奔腾-金码奖}
+\cvlistitem{1.独立负责C++公共基础类库的开发与维护工作，参与功能维护、代码优化、漏洞修复、性能提升等工作，在汇编与C++标准库实现层面深入分析解决问题。}
+\cvlistitem{2.负责方舟运行时基础库的开发和维护，参与了基础库数值类API接口治理与维护、基础库容器类API接口治理与维护、与社区成员共同维护ArkCompiler开源社区，积极贡献。}
+\cvlistitem{3.负责方舟运行时反射与类系统的开发与维护工作，通过语言层与运行时虚拟机层的交互，实现类与对象的动态创建、方法的动态调用、属性的动态获取与设置等。}
+
+
 \section{项目}
 \subsection{科研项目}
-\cvline{FFF-TNT}{建立深度学习模型，通过训练单身狗愤怒指数，预测 TNT 威力值，达到
-  最后 FFF 全部的效果}
-\cvline{NASA}{我又编不下去了，还是凑个字数，要不然你们将来替换也麻烦}
+\cvline{PKG-eMAE}{物理层密钥生成（PKG）增强的消息加密认证算法（eMAE）：基于物理层提供的随机源，对消息进行加密和认证，在低功耗设备上取得了良好的性能和保密性。}
+\cvline{PKG in DSN}{在分布式传感网络（DSN）中以PKG效用最大化为目标优化波束聚焦预编码、功率分配与用户配对方案，在多用户、低功耗设备、非正交多址接入、近场通信场景下，实现了更高的总和安全性，实现了物理层安全的目标。}
+
 \subsection{开源项目}
-\cvline{markvis}{在 markdown 中直接生成可视化图表的插件
-  \emph{https://markvis.js.org} \textbf{GitHub 1000 stars}}
-\cvline{netjsongraph.js}{用力导向图可视化出无线路由图谱数据 \emph{https://github.com/netjson/netjsongraph.js}}
-\cvline{typing}{Hexo 静态博客主题 \emph{https://github.com/geekplux/hexo-theme-typing}}
-\cvline{UnityVis}{Unity 中的基本可视化图表 \emph{https://github.com/geekplux/Basic-Visualization-in-Unity}}
+\cvline{ArkCompiler}{方舟编译运行时Built-in基础库维护与开发工作，数值类API接口治理与维护，反射与Class系统开发与维护。}
+\cvline{c\_utils}{OpenHarmony体系的公共基础类库，包括IPC通信基础数据结构、智能指针、事件循环、线程池、文件操作等基础类。}
 \section{技能}
-\cvline{\textbf{前端}}{熟练掌握前端该会的东西，熟悉前端该熟悉的东西，了解前端该
-  了解的原理，熟练使用前端该熟练使用的各类工具}
-\cvline{\textbf{后端}}{熟练掌握后端该会的东西，熟悉后端该熟悉的东西，了解后端该了解的原理}
-\cvline{\textbf{数据}}{掌握处理数据，掌握数据库}
-\cvline{\textbf{其他}}{熟练使用 Git/Vim/Emacs/Makefile}
+\cvline{\textbf{语言}}{熟练掌握C++，熟悉STL的使用及实现，熟悉Python/TypeScript/Shell脚本语言；}
+\cvline{\textbf{工具}}{熟练使用Git/Vim/GDB等工具；能够在Linux平台中进行C++开发}
+\cvline{\textbf{知识}}{熟悉操作系统、计算机网络、计算机组成原理、编译原理、数据库等基础知识，了解LLVM编译器的结构与基本实现；}
+\cvline{\textbf{其他}}{能够以英语为工作语言，与海外团队成员进行沟通与协作；阅读与撰写英文技术文档。}
 
 \section{Publications}
-\cvline{已录用}{张三，李四，王麻子 基于 latex 的简历凑字数研究[C]// CVChina. 2017.}
-
+\cvline{已录用}{\textbf{Zeng Xing}, Bo Zhao, Bo Xu, et al.  Enhanced Message Encryption Authentication Scheme Based on Physical-Layer Keg Generation in Resource-Limited Internet of Things[J], KSII Transactions on Internet and Information, 2024.}
 % \subsection{Vocational}
 % \cventry{year--year}{Job title}{Employer}{City}{}{Description}  % arguments 3 to 6 are optional
 % \cventry{year--year}{Job title}{Employer}{City}{}{Description}  % arguments 3 to 6 are optional
